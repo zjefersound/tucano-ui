@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   stories: ['../stories/**/*.stories.@(ts|tsx|js|jsx|mdx)'],
   addons: [
@@ -8,5 +10,18 @@ module.exports = {
   // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
   typescript: {
     check: true, // type-check stories during Storybook build
+  },
+  core: {
+    builder: {
+      name: 'webpack5',
+    },
+  },
+  webpackFinal: async (config, { configType }) => {
+    config.module.rules.push({
+      test: /\.less$/,
+      use: ['style-loader', 'css-loader', 'less-loader'],
+      include: path.resolve(__dirname, '../'),
+    });
+    return config;
   },
 };

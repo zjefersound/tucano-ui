@@ -1,5 +1,6 @@
 import React, { FC, HTMLAttributes, ReactNode } from 'react';
-import 'antd/dist/antd.less';
+// import 'antd/dist/antd.less';
+import './styles/index.less';
 export interface Props extends HTMLAttributes<HTMLDivElement> {
   /** custom content, defaults to 'the snozzberries taste like snozzberries' */
   children?: ReactNode;
